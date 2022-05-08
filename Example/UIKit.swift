@@ -1,6 +1,6 @@
 import SwiftUI
 
-@main // Delete this if you want to run your app and add when you're working with it
+@main
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
