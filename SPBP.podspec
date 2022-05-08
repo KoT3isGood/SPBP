@@ -21,8 +21,6 @@ Pod::Spec.new do |s|
   s.author           = { 'A. KoT.' => 'bratelllo@gmail.com' }
   s.source           = { :git => 'https://github.com/KoT3isGood/SwiftPlaygroundsBetterPreview.git', :tag => s.version.to_s }
 
-  s.social_media_url = 'https://twitter.com/aheze0'
-
   s.platform      = :ios, "15.0"
 
   s.source_files = 'Sources/**/*'
