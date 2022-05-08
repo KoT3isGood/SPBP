@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Popovers",
+    name: "SPBP",
     platforms: [
         .iOS(.v15),
     ],
