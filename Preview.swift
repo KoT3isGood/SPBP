@@ -389,7 +389,7 @@ struct Devices: ViewModifier {
         case "iPad Pro (11-inch)":
             ZStack {
                 content
-                    .extendSafeArea(top:20, bottom:0)
+                    .extendSafeArea(top:24, bottom:20)
                     .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .frame(width:1194, height:834)
                     .padding(35/632*834)
@@ -400,7 +400,7 @@ struct Devices: ViewModifier {
         case "iPad Pro (12.9-inch)":
             ZStack {
                 content
-                    .extendSafeArea(top:20, bottom:0)
+                    .extendSafeArea(top:24, bottom:20)
                     .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .frame(width:1366, height:1024)
                     .padding(35/776*834)
@@ -411,13 +411,24 @@ struct Devices: ViewModifier {
         case "iPad Air (10.5-inch)":
             ZStack {
                 content
-                    .extendSafeArea(top:20, bottom:0)
+                    .extendSafeArea(top:24, bottom:20)
                     .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .frame(width:1112, height:834)
-                    .padding(35/776*834)
+                    .padding(35/631*834)
                     .background(Color(red: 20/255, green: 20/255, blue: 20/255))
-                    .mask(RoundedRectangle(cornerRadius: 18+35/776*1024, style: .continuous))
+                    .mask(RoundedRectangle(cornerRadius: 18+35/631*834, style: .continuous))
                     .scaleEffect(631/834)
+            }
+        case "iPad mini (8.3-inch)":
+            ZStack {
+                content
+                    .extendSafeArea(top:24, bottom:20)
+                    .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .frame(width:1024, height:768)
+                    .padding(35/456*768)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 18+35/456*768, style: .continuous))
+                    .scaleEffect(456/768)
             }
         case "iPad Pro (10.5-inch)":
             ZStack {
