@@ -406,9 +406,20 @@ struct Devices: ViewModifier {
                     .padding(35/776*834)
                     .background(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .mask(RoundedRectangle(cornerRadius: 18+35/776*1024, style: .continuous))
-                    .scaleEffect(776/834/1.33)
+                    .scaleEffect(776/1024/1.1)
             }
-        case "iPad Pro (10.5-inch)","iPad Air (10.5-inch)":
+        case "iPad Air (10.5-inch)":
+            ZStack {
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .frame(width:1112, height:834)
+                    .padding(35/776*834)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 18+35/776*1024, style: .continuous))
+                    .scaleEffect(631/834)
+            }
+        case "iPad Pro (10.5-inch)":
             ZStack {
                 RoundedRectangle(cornerRadius: 0, style: .continuous)
                     .cornerRadius(37.5)
