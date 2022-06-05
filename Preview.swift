@@ -1,18 +1,15 @@
 import SwiftUI
 import UIKit
-
 extension View {
     func previewDevice(_ value: String) -> some View {
         modifier(Devices(value: value))
     }
 }
-
 extension View {
     func extendSafeArea(top: CGFloat = 0, left: CGFloat = 0, bottom: CGFloat = 0, right:CGFloat = 0) -> some View {
         modifier(ExtendedSafeAreaModifier(top: top,left: left,bottom: bottom,right:right))
     }
 }
-
 struct ExtendedSafeAreaModifier: ViewModifier {
     @State var top:CGFloat
     @State var left:CGFloat
@@ -46,8 +43,6 @@ struct ExtendedSafeAreaModifier: ViewModifier {
         }
     }
 }
-// V v
-
 struct Devices: ViewModifier {
     var value:String
     func body(content: Content) -> some View {
@@ -390,6 +385,67 @@ struct Devices: ViewModifier {
                         .offset(x: -51.5, y: 2)
                 }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .offset(x: 0, y: -303.3)
+            }
+        case "iPad Pro (11-inch)":
+            ZStack {
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .frame(width:1194, height:834)
+                    .padding(35/632*834)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 18+35/632*834, style: .continuous))
+                    .scaleEffect(632/834)
+            }
+        case "iPad Pro (12.9-inch)":
+            ZStack {
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .frame(width:1366, height:1024)
+                    .padding(35/776*834)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 18+35/776*1024, style: .continuous))
+                    .scaleEffect(776/834/1.33)
+            }
+        case "iPad Pro (10.5-inch)","iPad Air (10.5-inch)":
+            ZStack {
+                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                    .cornerRadius(37.5)
+                    .frame(width: 980, height: 680)
+                    .foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
+                
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .frame(width:1112, height:834)
+                    .clipped()
+                    .scaleEffect(632/834)
+            }
+        case "iPad Pro (9.7-inch)","iPad Air (9.7-inch)","iPad (9.7-inch)":
+            ZStack {
+                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                    .cornerRadius(37.5)
+                    .frame(width: 940, height: 660)
+                    .foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
+                
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .frame(width:1024, height:768)
+                    .clipped()
+                    .scaleEffect(582/768)
+            }
+        case "iPad (10.2-inch)":
+            ZStack {
+                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                    .cornerRadius(37.5)
+                    .frame(width: 980, height: 680)
+                    .foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
+                
+                content
+                    .extendSafeArea(top:20, bottom:0)
+                    .frame(width:1080, height:810)
+                    .clipped()
+                    .scaleEffect(612/810)
             }
         default:
             Text("None")
