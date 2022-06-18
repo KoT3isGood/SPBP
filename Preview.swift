@@ -395,7 +395,7 @@ struct Devices: ViewModifier {
                     .padding(35/632*834)
                     .background(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .mask(RoundedRectangle(cornerRadius: 18+35/632*834, style: .continuous))
-                    .scaleEffect(632/834/1.15)
+                    .scaleEffect(632/834)
             }
         case "iPad Pro (12.9-inch)":
             ZStack {
@@ -406,7 +406,7 @@ struct Devices: ViewModifier {
                     .padding(35/776*834)
                     .background(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .mask(RoundedRectangle(cornerRadius: 18+35/776*1024, style: .continuous))
-                    .scaleEffect(776/1024/1.3)
+                    .scaleEffect(776/1024/1.1)
             }
         case "iPad Air (10.5-inch)":
             ZStack {
@@ -417,7 +417,7 @@ struct Devices: ViewModifier {
                     .padding(35/631*834)
                     .background(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .mask(RoundedRectangle(cornerRadius: 18+35/631*834, style: .continuous))
-                    .scaleEffect(631/834/1.15)
+                    .scaleEffect(631/834)
             }
         case "iPad mini (8.3-inch)":
             ZStack {
@@ -442,7 +442,7 @@ struct Devices: ViewModifier {
                     .frame(width:1112, height:834)
                     .clipped()
                     .scaleEffect(632/834)
-            }.scaleEffect(1/1.15)
+            }
         case "iPad Pro (9.7-inch)","iPad Air (9.7-inch)","iPad (9.7-inch)":
             ZStack {
                 RoundedRectangle(cornerRadius: 0, style: .continuous)
@@ -455,7 +455,7 @@ struct Devices: ViewModifier {
                     .frame(width:1024, height:768)
                     .clipped()
                     .scaleEffect(582/768)
-            }.scaleEffect(1/1.15)
+            }
         case "iPad (10.2-inch)":
             ZStack {
                 RoundedRectangle(cornerRadius: 0, style: .continuous)
@@ -468,22 +468,28 @@ struct Devices: ViewModifier {
                     .frame(width:1080, height:810)
                     .clipped()
                     .scaleEffect(612/810)
-            }.scaleEffect(1/1.15)
-        case "iPad mini (7.9-inch)":
-            ZStack {
-                RoundedRectangle(cornerRadius: 0, style: .continuous)
-                    .cornerRadius(37.5)
-                    .frame(width: 800, height: 530)
-                    .foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
-                
-                content
-                    .extendSafeArea(top:20, bottom:0)
-                    .frame(width:1024, height:768)
-                    .clipped()
-                    .scaleEffect(471/768)
             }
         default:
             Text("None")
         }
+    }
+}
+extension View {
+    func previewLayout(_ width: CGFloat, _ height: CGFloat) -> some View {
+        modifier(Layouts(width: width, height: height))
+    }
+}
+struct Layouts: ViewModifier {
+    var width: CGFloat
+    var height: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .frame(width: width, height: height, alignment: .center)
+            .background(Color(.systemBackground))
+            .clipped()
+            .preferredColorScheme(.light)
+            .padding(5)
+            .background(Color(uiColor: UIColor.systemGray4))
+            .mask(RoundedRectangle(cornerRadius: 3, style: .continuous))
     }
 }
