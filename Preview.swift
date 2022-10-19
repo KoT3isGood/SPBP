@@ -47,20 +47,7 @@ struct Devices: ViewModifier {
     var value:String
     func body(content: Content) -> some View {
         switch value {
-        case "iPhone SE (1st generation)":
-            ZStack {
-                RoundedRectangle(cornerRadius: 0, style: .continuous)
-                    .cornerRadius(37.5)
-                    .frame(width: 231, height: 487)
-                    .foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
-                
-                content
-                    .extendSafeArea(top:20, bottom:0)
-                    .frame(width:320, height:568)
-                    .clipped()
-                    .scaleEffect(348/568)
-            }
-        case "iPhone SE (2nd generation)","iPhone SE (3rd generation)","iPhone 6","iPhone 6S","iPhone 7","iPhone 8":
+        case "iPhone SE (2nd generation)","iPhone SE (3rd generation)","iPhone 7","iPhone 8":
             ZStack {
                 RoundedRectangle(cornerRadius: 0, style: .continuous)
                     .cornerRadius(37.5)
@@ -286,7 +273,7 @@ struct Devices: ViewModifier {
                 }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .offset(x: 0, y: -303.3)
             }
-        case "iPhone 13", "iPhone 13 Pro":
+        case "iPhone 13", "iPhone 13 Pro", "iPhone 14":
             ZStack {
                 content
                     .extendSafeArea(top:47, bottom:34)
@@ -353,7 +340,7 @@ struct Devices: ViewModifier {
                 }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .offset(x: 0, y: -245.76)
             }
-        case "iPhone 13 Pro Max":
+        case "iPhone 13 Pro Max", "iPhone 14 Plus":
             ZStack {
                 content
                     .extendSafeArea(top:47, bottom:34)
@@ -385,6 +372,38 @@ struct Devices: ViewModifier {
                         .offset(x: -51.5, y: 2)
                 }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
                     .offset(x: 0, y: -303.3)
+            }
+        case "iPhone 14 Pro":
+            ZStack {
+                content
+                    .extendSafeArea(top:59, bottom:34)
+                    .frame(width:393, height:852)
+                    .mask(RoundedRectangle(cornerRadius: 53.33, style: .continuous))
+                    .padding(10/560*852)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 53.33+10/607*926, style: .continuous))
+                    .scaleEffect(560/852)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16.5,style: .continuous)
+                        .frame(width: 88, height: 24)
+                }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .offset(x: 0, y: -260)
+            }
+        case "iPhone 14 Pro Max":
+            ZStack {
+                content
+                    .extendSafeArea(top:59, bottom:34)
+                    .frame(width:430, height:932)
+                    .mask(RoundedRectangle(cornerRadius: 53.33, style: .continuous))
+                    .padding(10/606*932)
+                    .background(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .mask(RoundedRectangle(cornerRadius: 53.33+10/607*926, style: .continuous))
+                    .scaleEffect(606/932)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16.5,style: .continuous)
+                        .frame(width: 88, height: 24)
+                }.foregroundColor(Color(red: 20/255, green: 20/255, blue: 20/255))
+                    .offset(x: 0, y: -285)
             }
         case "iPad Pro (11-inch)":
             ZStack {
@@ -472,24 +491,5 @@ struct Devices: ViewModifier {
         default:
             Text("None")
         }
-    }
-}
-extension View {
-    func previewLayout(_ width: CGFloat, _ height: CGFloat) -> some View {
-        modifier(Layouts(width: width, height: height))
-    }
-}
-struct Layouts: ViewModifier {
-    var width: CGFloat
-    var height: CGFloat
-    func body(content: Content) -> some View {
-        content
-            .frame(width: width, height: height, alignment: .center)
-            .background(Color(.systemBackground))
-            .clipped()
-            .preferredColorScheme(.light)
-            .padding(5)
-            .background(Color(uiColor: UIColor.systemGray4))
-            .mask(RoundedRectangle(cornerRadius: 3, style: .continuous))
     }
 }
