@@ -1,4 +1,4 @@
-# Swift Playgrounss Better Preview
+# Swift Playgrounds Better Preview
 Package for Swift Playgrounds that simulates preview like in Xcode
 
 ## Installation and Usage in SwiftUI
